@@ -1,47 +1,81 @@
+import { useState } from 'react';
 import type { HistoryItem } from '../App';
 import './History.css';
 
 interface Props {
   history: HistoryItem[];
+  onClear: () => void;
 }
 
-export function History({ history }: Props) {
-  const formatDateTime = (timestamp: number) => {
-    const d = new Date(timestamp);
-    const now = new Date();
-    
-    // Check if it's today
-    const isToday = d.getDate() === now.getDate() && 
-                    d.getMonth() === now.getMonth() && 
-                    d.getFullYear() === now.getFullYear();
+export function History({ history, onClear }: Props) {
+  const [openDates, setOpenDates] = useState<Record<string, boolean>>(() => {
+    const today = new Date().toLocaleDateString('ja-JP');
+    return { [today]: true };
+  });
 
-    const h = d.getHours().toString().padStart(2, '0');
-    const m = d.getMinutes().toString().padStart(2, '0');
-    const timeStr = `${h}:${m}`;
-
-    if (isToday) {
-      return timeStr;
-    } else {
-      const month = (d.getMonth() + 1).toString().padStart(2, '0');
-      const day = d.getDate().toString().padStart(2, '0');
-      return `${month}/${day} ${timeStr}`;
-    }
+  const toggleDate = (date: string) => {
+    setOpenDates(prev => ({ ...prev, [date]: !prev[date] }));
   };
+
+  const formatTime = (timestamp: number) => {
+    const d = new Date(timestamp);
+    return d.getHours().toString().padStart(2, '0') + ':' + 
+           d.getMinutes().toString().padStart(2, '0');
+  };
+
+  // Grouping logic
+  const grouped = history.reduce((acc, item) => {
+    const date = new Date(item.timestamp).toLocaleDateString('ja-JP');
+    if (!acc[date]) acc[date] = [];
+    acc[date].push(item);
+    return acc;
+  }, {} as Record<string, HistoryItem[]>);
+
+  // Sort dates descending
+  const sortedDates = Object.keys(grouped).sort((a, b) => 
+    new Date(b).getTime() - new Date(a).getTime()
+  );
 
   return (
     <div className="glass-panel history-container">
-      <h2>抽選履歴 (History)</h2>
-      <ul className="history-list">
-        {history.slice().sort((a,b)=>b.timestamp - a.timestamp).map(item => (
-          <li key={item.id} className="history-item">
-            <span className="history-time">{formatDateTime(item.timestamp)}</span>
-            <span className="history-text">{item.taskText}</span>
-          </li>
-        ))}
-        {history.length === 0 && (
-          <li className="empty-msg">履歴はありません</li>
+      <div className="history-header">
+        <h2>抽選履歴 (History)</h2>
+        {history.length > 0 && (
+          <button className="clear-btn" onClick={onClear}>一括削除</button>
         )}
-      </ul>
+      </div>
+
+      <div className="history-scroll-area">
+        {sortedDates.map(date => {
+          const items = grouped[date].sort((a, b) => b.timestamp - a.timestamp);
+          const isOpen = !!openDates[date];
+          
+          return (
+            <div key={date} className={`history-group ${isOpen ? 'is-open' : ''}`}>
+              <button className="group-header" onClick={() => toggleDate(date)}>
+                <span className="group-date">{date}</span>
+                <span className="group-count">{items.length}件</span>
+                <span className="group-arrow">{isOpen ? '▼' : '▶'}</span>
+              </button>
+              
+              {isOpen && (
+                <ul className="history-list">
+                  {items.map(item => (
+                    <li key={item.id} className="history-item">
+                      <span className="history-time">{formatTime(item.timestamp)}</span>
+                      <span className="history-text">{item.taskText}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+
+        {history.length === 0 && (
+          <div className="empty-msg">履歴はありません</div>
+        )}
+      </div>
     </div>
   );
 }

@@ -47,6 +47,12 @@ function App() {
     setHistory(prev => [...prev, newHistoryItem]);
   };
 
+  const clearHistory = () => {
+    if (window.confirm('すべての履歴を削除してもよろしいですか？')) {
+      setHistory([]);
+    }
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -60,7 +66,7 @@ function App() {
 
         <TaskBox tasks={tasks} setTasks={setTasks} />
 
-        <History history={history} />
+        <History history={history} onClear={clearHistory} />
       </main>
     </div>
   );
