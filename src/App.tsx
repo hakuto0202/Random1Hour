@@ -19,6 +19,7 @@ export interface HistoryItem {
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [currentView, setCurrentView] = useState<'main' | 'history'>('main');
 
   // Load from LocalStorage
   useEffect(() => {
@@ -53,6 +54,11 @@ function App() {
     }
   };
 
+  const todayStr = new Date().toLocaleDateString('ja-JP');
+  const todayHistory = history.filter(item => 
+    new Date(item.timestamp).toLocaleDateString('ja-JP') === todayStr
+  );
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -60,13 +66,25 @@ function App() {
         <p>次の1時間を決める運命のガチャ</p>
       </header>
       <main className="app-main">
-        <Roulette tasks={tasks} onResult={handleRouletteResult} />
-        
-        <Timer />
-
-        <TaskBox tasks={tasks} setTasks={setTasks} />
-
-        <History history={history} onClear={clearHistory} />
+        {currentView === 'main' ? (
+          <>
+            <Roulette tasks={tasks} onResult={handleRouletteResult} />
+            <Timer />
+            <TaskBox tasks={tasks} setTasks={setTasks} />
+            <History 
+              history={todayHistory} 
+              onClear={clearHistory} 
+              onShowAll={() => setCurrentView('history')} 
+            />
+          </>
+        ) : (
+          <History 
+            history={history} 
+            onClear={clearHistory} 
+            onBack={() => setCurrentView('main')} 
+            isFullPage={true} 
+          />
+        )}
       </main>
     </div>
   );
