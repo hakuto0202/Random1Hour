@@ -67,16 +67,20 @@ function App() {
       </header>
       <main className="app-main">
         {currentView === 'main' ? (
-          <>
-            <Roulette tasks={tasks} onResult={handleRouletteResult} />
-            <Timer />
-            <TaskBox tasks={tasks} setTasks={setTasks} />
-            <History 
-              history={todayHistory} 
-              onClear={clearHistory} 
-              onShowAll={() => setCurrentView('history')} 
-            />
-          </>
+          <div className="main-layout">
+            <div className="main-col">
+              <Roulette tasks={tasks} onResult={handleRouletteResult} />
+              <TaskBox tasks={tasks} setTasks={setTasks} />
+            </div>
+            <div className="main-col">
+              <Timer />
+              <History 
+                history={todayHistory} 
+                onClear={clearHistory} 
+                onShowAll={() => setCurrentView('history')} 
+              />
+            </div>
+          </div>
         ) : (
           <History 
             history={history} 
