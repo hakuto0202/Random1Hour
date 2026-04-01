@@ -9,10 +9,28 @@
   --border-color: #e2e8f0;
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.05);
+  --wheel-bg: #f1f5f9;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 18px; /* UI Scale Up */
 }
+
+[data-theme='cyberpunk'] {
+  --bg-color: #0d1117;
+  --text-color: #f0f6fc;
+  --primary-color: #f85149;
+  --primary-hover: #da3633;
+  --accent-color: #f2cc60;
+  --accent-hover: #d29922;
+  --surface-color: #161b22;
+  --border-color: #30363d;
+  --glass-bg: rgba(13, 17, 23, 0.85);
+  --glass-border: rgba(248, 81, 73, 0.3);
+  --wheel-bg: #0d1117;
+}
+
+/* Other themes omitted for brevity or can be updated similarly if needed, but keeping them as is for now unless they feel off */
 
 * {
   box-sizing: border-box;
@@ -27,44 +45,59 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* subtle light background gradient */
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(210,100%,98%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(220,100%,95%,0.3) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(330,100%,95%,0.2) 0, transparent 50%);
   background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-container {
   width: 100%;
-  max-width: 800px;
-  padding: 2rem;
+  max-width: 1200px; /* Scale Up */
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .app-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.app-header h1 {
-  font-size: 3rem;
+.header-main h1 {
+  font-size: 3.5rem; /* Scale Up */
   margin: 0;
-  background: linear-gradient(to right, #2563eb, #7c3aed);
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #2563eb;
+  color: var(--primary-color);
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
-.app-header p {
+.header-main p {
   color: #64748b;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-top: 0.5rem;
+}
+
+.theme-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem !important;
+}
+
+.theme-selector select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
 }
 
 .app-main {
@@ -73,14 +106,10 @@ body {
 }
 
 /* PC向けの2カラムレイアウト */
-@media (min-width: 800px) {
-  .app-container {
-    max-width: 1200px;
-  }
-  
+@media (min-width: 1024px) {
   .main-layout {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: flex-start;
   }
 
@@ -88,18 +117,67 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+  }
+  
+  /* Left column can be slightly wider for the wheel */
+  .main-col:first-child {
+    flex: 1.2;
   }
 }
 
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem; /* Scale Up */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active-mission-banner {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.roulette-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.main-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  width: 100%;
+}
+
+.secondary-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.sub-btn {
+  flex: 1;
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+  font-size: 0.875rem;
+  padding: 0.6rem 1rem;
+}
+
+.sub-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 button {
@@ -107,16 +185,16 @@ button {
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: var(--primary-hover);
+  filter: brightness(0.9);
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
 }
@@ -125,19 +203,70 @@ button:active {
   transform: translateY(0);
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
 input[type="text"] {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   color: var(--text-color);
   font-size: 1rem;
   transition: all 0.2s;
 }
 
-input[type="text"]:focus {
-  outline: none;
+.active-mission-banner {
+  background: var(--glass-bg);
+  border: 1px solid var(--primary-color);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  animation: slideDownIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+}
+
+.mission-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  letter-spacing: 0.1em;
+}
+
+.mission-text {
+  font-size: 1.75rem;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.complete-btn {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+  padding: 0.5rem 1rem;
+}
+
+.complete-btn:hover {
+  background: var(--primary-color);
+  color: white;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+@keyframes slideDownIn {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
