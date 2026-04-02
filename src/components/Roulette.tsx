@@ -121,7 +121,7 @@ export function Roulette({ tasks, onResult, onTripleChoice, theme }: Props) {
         
         // Calculate result
         const finalRotation = (currentRotation % 360);
-        const index = Math.floor(((360 - finalRotation + 90) % 360) / segmentAngle);
+        const index = Math.floor(((360 - finalRotation) % 360) / segmentAngle);
         const winIndex = (index + tasks.length) % tasks.length;
         const wonTask = tasks[winIndex];
         

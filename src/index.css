@@ -176,7 +176,6 @@ body {
 }
 
 .sub-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
   transform: translateY(-1px);
 }
 
