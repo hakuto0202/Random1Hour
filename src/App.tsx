@@ -144,7 +144,7 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <div className="header-main">
-          <h1>Random 1 Hour</h1>
+          <h1>ルーレット生活</h1>
           <p>次の行動をランダムで決めよう</p>
         </div>
         <div className="theme-selector glass-panel">

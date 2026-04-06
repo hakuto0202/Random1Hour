@@ -26,8 +26,7 @@ export function ChoiceBox({ choices, allTasks, onSelect, onCancel }: Props) {
     <div className="glass-panel choicebox-container scale-up">
       <div className="choicebox-header">
         <span className="choicebox-badge">The Destiny Triple</span>
-        <h3>運命の3択</h3>
-        <p>提示された3つの候補から1つ選ぶ</p>
+        <h3>ランダムな3択から選ぶ</h3>
       </div>
 
       <div className="choices-grid">

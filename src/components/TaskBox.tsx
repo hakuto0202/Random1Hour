@@ -51,7 +51,6 @@ export function TaskBox({ tasks, setTasks, history, onSelect }: Props) {
       <TaskSuggestions history={history} onAdd={handleAddString} />
 
       <div className="task-list-section">
-        <h3>現在の抽選候補 ({tasks.length})</h3>
         <ul className="task-list">
           {tasks.map(task => (
             <li key={task.id} className="task-item">
