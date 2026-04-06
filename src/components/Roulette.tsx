@@ -106,6 +106,13 @@ export function Roulette({ tasks, onResult, onTripleChoice, theme }: Props) {
       setRotation(currentRotation);
       currentRotationRef.current = currentRotation;
 
+      // Tension Shake Logic (Starts when progress > 0.8)
+      if (progress > 0.8 && progress < 1) {
+        const shakeIntensity = (progress - 0.8) * 10;
+        const offset = (Math.random() - 0.5) * shakeIntensity;
+        setRotation(currentRotation + offset);
+      }
+
       // Tick sound logic
       const normalizedRotation = (currentRotation % 360);
       if (Math.abs(normalizedRotation - lastTickAngle) >= segmentAngle) {
