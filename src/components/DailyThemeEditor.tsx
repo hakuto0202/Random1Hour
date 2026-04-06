@@ -14,12 +14,12 @@ export function DailyThemeEditor({ dailyTasks, onUpdate, onClose }: Props) {
   const addTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTask.trim()) return;
-    
+
     const task: DailyTask = {
       id: crypto.randomUUID(),
       text: newTask.trim()
     };
-    
+
     onUpdate([...dailyTasks, task]);
     setNewTask('');
   };
@@ -31,19 +31,16 @@ export function DailyThemeEditor({ dailyTasks, onUpdate, onClose }: Props) {
   const addPresets = () => {
     const presets = [
       "本日500円で生活",
-      "2時間に1回Noteを書く",
-      "ゲーム開発集中日",
-      "AntiGravity開発",
       "創作料理に挑戦",
       "デジタルデトックス",
       "1日1万歩歩く",
       "未読本を消化する"
     ];
-    
+
     const newTasks = presets
       .filter(p => !dailyTasks.some(t => t.text === p))
       .map(p => ({ id: crypto.randomUUID(), text: p }));
-      
+
     onUpdate([...dailyTasks, ...newTasks]);
   };
 
@@ -51,18 +48,18 @@ export function DailyThemeEditor({ dailyTasks, onUpdate, onClose }: Props) {
     <div className="daily-editor-overlay">
       <div className="glass-panel daily-editor-modal">
         <header className="modal-header">
-          <h2>デイリーテーマ設定</h2>
+          <h2>今日のテーマ設定</h2>
           <button className="close-btn" onClick={onClose}>×</button>
         </header>
-        
+
         <p className="modal-desc">
-          1日の始まりに抽選される「今日のテーマ」のリストを管理します。
+          今日のテーマのリストを管理
         </p>
 
         <form onSubmit={addTask} className="add-task-form">
-          <input 
-            type="text" 
-            value={newTask} 
+          <input
+            type="text"
+            value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder="新しいテーマを入力..."
             autoFocus
