@@ -4,6 +4,8 @@ import { History } from './components/History';
 import { Roulette } from './components/Roulette';
 import { Timer } from './components/Timer';
 import { ChoiceBox } from './components/ChoiceBox';
+import { DailyThemeEditor } from './components/DailyThemeEditor';
+import { ThemeDrawOverlay } from './components/ThemeDrawOverlay';
 
 export interface Task {
   id: string;
@@ -17,6 +19,11 @@ export interface HistoryItem {
   timestamp: number;
 }
 
+export interface DailyTask {
+  id: string;
+  text: string;
+}
+
 export type Theme = 'default' | 'cyberpunk' | 'mint' | 'sunset' | 'ocean';
 
 function App() {
@@ -24,6 +31,12 @@ function App() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [currentView, setCurrentView] = useState<'main' | 'history'>('main');
   const [theme, setTheme] = useState<Theme>('default');
+  
+  // Daily Theme States
+  const [dailyTasks, setDailyTasks] = useState<DailyTask[]>([]);
+  const [selectedDailyTheme, setSelectedDailyTheme] = useState<DailyTask | null>(null);
+  const [showThemeDraw, setShowThemeDraw] = useState(false);
+  const [showDailyEditor, setShowDailyEditor] = useState(false);
   
   // New States for expanded features
   const [activeMission, setActiveMission] = useState<Task | null>(null);
@@ -35,17 +48,45 @@ function App() {
     const savedHistory = localStorage.getItem('r1h_history');
     const savedTheme = localStorage.getItem('r1h_theme') as Theme;
     const savedActive = localStorage.getItem('r1h_active');
+    const savedDailyTasks = localStorage.getItem('r1h_daily_tasks');
+    const savedSelectedDaily = localStorage.getItem('r1h_selected_daily');
+    const lastVisited = localStorage.getItem('r1h_last_visited');
 
     if (savedTasks) setTasks(JSON.parse(savedTasks));
     if (savedHistory) setHistory(JSON.parse(savedHistory));
     if (savedTheme) setTheme(savedTheme);
     if (savedActive) setActiveMission(JSON.parse(savedActive));
+    if (savedDailyTasks) setDailyTasks(JSON.parse(savedDailyTasks));
+
+    const todayStr = new Date().toLocaleDateString('ja-JP');
+    
+    // Check if it's a new day
+    if (lastVisited !== todayStr) {
+      // New day! Clear previous selection
+      setSelectedDailyTheme(null);
+      localStorage.removeItem('r1h_selected_daily');
+      localStorage.setItem('r1h_last_visited', todayStr);
+    } else if (savedSelectedDaily) {
+      setSelectedDailyTheme(JSON.parse(savedSelectedDaily));
+    }
   }, []);
 
   // Save to LocalStorage
   useEffect(() => {
     localStorage.setItem('r1h_tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem('r1h_daily_tasks', JSON.stringify(dailyTasks));
+  }, [dailyTasks]);
+
+  useEffect(() => {
+    if (selectedDailyTheme) {
+      localStorage.setItem('r1h_selected_daily', JSON.stringify(selectedDailyTheme));
+    } else {
+      localStorage.removeItem('r1h_selected_daily');
+    }
+  }, [selectedDailyTheme]);
 
   useEffect(() => {
     localStorage.setItem('r1h_history', JSON.stringify(history));
@@ -116,7 +157,48 @@ function App() {
             <option value="ocean">Deep Ocean</option>
           </select>
         </div>
+        <div className="header-actions">
+          <button className="sub-btn daily-btn" onClick={() => setShowDailyEditor(true)}>
+            📅 デイリーテーマ設定
+          </button>
+        </div>
       </header>
+      
+      {selectedDailyTheme && (
+        <section className="daily-theme-banner">
+          <div className="daily-banner-content">
+            <span className="daily-banner-label">Today's Daily Theme</span>
+            <h2 className="daily-banner-text">{selectedDailyTheme.text}</h2>
+          </div>
+          <div className="daily-banner-decoration"></div>
+        </section>
+      )}
+
+      {!selectedDailyTheme && dailyTasks.length > 0 && (
+        <section className="daily-ritual-prompt glass-panel" onClick={() => setShowThemeDraw(true)}>
+          <div className="ritual-prompt-content">
+            <span className="ritual-sparkle">✨</span>
+            <div className="ritual-text-wrap">
+              <h3>本日の運命を決めましょう</h3>
+              <p>朝の儀式（デイリーテーマ抽選）を開始する</p>
+            </div>
+          </div>
+          <button className="ritual-start-btn">抽選スタート</button>
+        </section>
+      )}
+
+      {!selectedDailyTheme && dailyTasks.length === 0 && (
+        <section className="daily-ritual-prompt glass-panel empty" onClick={() => setShowDailyEditor(true)}>
+          <div className="ritual-prompt-content">
+            <span className="ritual-sparkle">📅</span>
+            <div className="ritual-text-wrap">
+              <h3>デイリーテーマを登録しましょう</h3>
+              <p>1日の指針となるテーマをリストに追加してください</p>
+            </div>
+          </div>
+          <button className="ritual-start-btn">設定を開く</button>
+        </section>
+      )}
       
       {activeMission && (
         <section className="active-mission-banner glass-panel">
@@ -167,6 +249,24 @@ function App() {
           />
         )}
       </main>
+
+      {showThemeDraw && (
+        <ThemeDrawOverlay 
+          themes={dailyTasks} 
+          onSelect={(theme) => {
+            setSelectedDailyTheme(theme);
+            setShowThemeDraw(false);
+          }} 
+        />
+      )}
+
+      {showDailyEditor && (
+        <DailyThemeEditor 
+          dailyTasks={dailyTasks} 
+          onUpdate={setDailyTasks} 
+          onClose={() => setShowDailyEditor(false)} 
+        />
+      )}
     </div>
   );
 }
