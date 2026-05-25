@@ -157,3 +157,33 @@
 .task-list-container::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+@media (max-width: 480px) {
+  .daily-editor-modal {
+    width: 95%;
+    max-height: 90vh;
+    padding: 1.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  /* フォームを縦積みに */
+  .add-task-form {
+    flex-direction: column;
+  }
+
+  .add-task-form input {
+    width: 100%;
+  }
+
+  .add-task-form button {
+    width: 100%;
+  }
+
+  .modal-desc {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+}

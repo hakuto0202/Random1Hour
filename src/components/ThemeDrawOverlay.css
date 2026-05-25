@@ -158,3 +158,62 @@
   0% { transform: translateY(-30px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
+
+/* タブレット */
+@media (max-width: 1023px) {
+  .draw-title {
+    font-size: 3rem;
+  }
+
+  .mystery-card {
+    width: 180px;
+    height: 270px;
+  }
+
+  .cards-container {
+    gap: 1.5rem;
+  }
+}
+
+/* モバイル */
+@media (max-width: 600px) {
+  .draw-content {
+    padding: 1.25rem;
+  }
+
+  .draw-title {
+    font-size: 2.25rem;
+  }
+
+  .draw-desc {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* カードを横並びから縦辺りに変更 */
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .mystery-card {
+    width: calc(33% - 0.75rem);
+    height: 180px;
+    min-width: 90px;
+  }
+
+  .card-back {
+    padding: 1rem;
+  }
+
+  .result-theme-text {
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+
+  .card-pattern {
+    font-size: 5rem;
+  }
+}

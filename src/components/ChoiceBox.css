@@ -109,3 +109,40 @@
     height: 180px;
   }
 }
+
+@media (max-width: 480px) {
+  .choicebox-container.scale-up {
+    padding: 1.5rem !important;
+    gap: 1.5rem;
+  }
+
+  .choicebox-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .choicebox-header p {
+    font-size: 1rem;
+  }
+
+  .reel-card {
+    height: 140px;
+  }
+
+  .reel-mask {
+    height: 90px;
+  }
+
+  .choice-text {
+    font-size: 1.2rem;
+  }
+
+  .is-stopped .choice-text {
+    font-size: 1.2rem;
+  }
+
+  .choicebox-cancel {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.85rem 1.5rem;
+  }
+}

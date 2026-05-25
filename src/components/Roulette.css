@@ -8,8 +8,8 @@
 
 .wheel-wrapper {
   position: relative;
-  width: 450px;
-  height: 450px;
+  width: min(450px, 85vw);
+  height: min(450px, 85vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,9 +88,29 @@
   100% { transform: translateY(0); opacity: 1; }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1023px) {
+  .roulette-actions {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
   .wheel-wrapper {
-    width: 280px;
-    height: 280px;
+    width: min(340px, 88vw);
+    height: min(340px, 88vw);
+  }
+
+  .roulette-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .result-text {
+    font-size: 1.4rem;
+  }
+
+  .secondary-actions {
+    flex-wrap: wrap;
   }
 }

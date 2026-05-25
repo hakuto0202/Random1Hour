@@ -42,7 +42,7 @@ export function ChoiceBox({ choices, allTasks, onSelect, onCancel }: Props) {
 
       <div className="choicebox-footer">
         <button className="choicebox-cancel" onClick={onCancel} disabled={stoppedIndices.length < 3}>
-          抽選に戻る
+          戻る
         </button>
       </div>
     </div>
