@@ -541,6 +541,9 @@ input[type="text"] {
   .main-col {
     flex: unset !important;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }
 
