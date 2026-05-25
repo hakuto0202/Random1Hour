@@ -24,9 +24,8 @@ export function Roulette({ tasks, onResult, onTripleChoice, theme }: Props) {
     switch (theme) {
       case 'cyberpunk': return ['#f43f5e', '#fbbf24', '#8b5cf6', '#06b6d4', '#10b981'];
       case 'mint': return ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#059669'];
-      case 'sunset': return ['#f97316', '#fb923c', '#fdba74', '#fed7aa', '#ea580c'];
       case 'ocean': return ['#0ea5e9', '#38bdf8', '#7dd3fc', '#bae6fd', '#0284c7'];
-      default: return ['#2563eb', '#60a5fa', '#93c5fd', '#bfdbfe', '#1d4ed8'];
+      default: return ['#5b7fa6', '#7ba3ca', '#a8c5e0', '#6b7dbf', '#4a6d92'];
     }
   };
 
