@@ -24,7 +24,7 @@ export interface DailyTask {
   text: string;
 }
 
-export type Theme = 'default' | 'cyberpunk' | 'mint' | 'sunset' | 'ocean';
+export type Theme = 'default' | 'cyberpunk' | 'mint' | 'ocean';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -150,10 +150,9 @@ function App() {
         <div className="theme-selector glass-panel">
           <label>Theme:</label>
           <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-            <option value="default">Default Blue</option>
+            <option value="default">Simple</option>
             <option value="cyberpunk">Cyberpunk</option>
             <option value="mint">Fresh Mint</option>
-            <option value="sunset">Sunset Glow</option>
             <option value="ocean">Deep Ocean</option>
           </select>
         </div>

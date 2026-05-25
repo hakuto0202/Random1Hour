@@ -1,15 +1,15 @@
 :root {
-  --bg-color: #f8fafc;
-  --text-color: #1e293b;
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --accent-color: #db2777;
-  --accent-hover: #be185d;
+  --bg-color: #f1f3f7;
+  --text-color: #2d3748;
+  --primary-color: #5b7fa6;
+  --primary-hover: #4a6d92;
+  --accent-color: #6b7dbf;
+  --accent-hover: #5a6aaa;
   --surface-color: #ffffff;
-  --border-color: #e2e8f0;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --wheel-bg: #f8fafc;
+  --border-color: #dde3ec;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --wheel-bg: #f1f3f7;
   font-family: 'Outfit', sans-serif;
   line-height: 1.6;
   font-weight: 400;
@@ -46,21 +46,6 @@
   --mesh-color-2: #34d399;
 }
 
-[data-theme='sunset'] {
-  --bg-color: #fff7ed;
-  --text-color: #431407;
-  --primary-color: #ea580c;
-  --primary-hover: #c2410c;
-  --accent-color: #f59e0b;
-  --accent-hover: #d97706;
-  --surface-color: #ffffff;
-  --border-color: #fed7aa;
-  --glass-bg: rgba(255, 247, 237, 0.75);
-  --glass-border: rgba(234, 88, 12, 0.2);
-  --wheel-bg: #ffedd5;
-  --mesh-color-1: #fb923c;
-  --mesh-color-2: #fbbf24;
-}
 
 [data-theme='ocean'] {
   --bg-color: #0c1a2e;
@@ -104,6 +89,36 @@ body {
   background-attachment: fixed;
   animation: mesh-bg 20s ease infinite;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Simpleテーマ（デフォルト）: グラデーション・アニメーションを無効化 */
+[data-theme='default'] body {
+  background-image: none;
+  animation: none;
+  background-color: var(--bg-color);
+}
+
+/* Simpleテーマ: ボタンを単色に */
+[data-theme='default'] button {
+  background: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(91, 127, 166, 0.2);
+}
+
+[data-theme='default'] button:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 8px 20px rgba(91, 127, 166, 0.3);
+}
+
+[data-theme='default'] .glass-panel {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='default'] .glass-panel:hover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.09),
+    0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 @keyframes mesh-bg {
