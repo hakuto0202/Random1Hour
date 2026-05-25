@@ -47,13 +47,13 @@
 .mode-switch-btn {
   background: transparent;
   border: 1px solid var(--border-color);
-  color: #64748b;
+  color: var(--muted-color);
   padding: 0.25rem 0.75rem;
   font-size: 0.85rem;
   border-radius: 4px;
 }
 .mode-switch-btn:hover {
-  background: #f1f5f9;
+  background: var(--hover-bg);
 }
 
 .time-selector {
@@ -65,7 +65,7 @@
 .time-option-btn {
   background: transparent;
   border: 1px solid var(--border-color);
-  color: #64748b;
+  color: var(--muted-color);
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
   border-radius: 20px;
@@ -73,7 +73,7 @@
 }
 
 .time-option-btn:hover {
-  background: #f1f5f9;
+  background: var(--hover-bg);
 }
 
 .time-option-btn.active {
@@ -102,7 +102,7 @@
 
 .timer-circle-bg {
   fill: none;
-  stroke: #f1f5f9;
+  stroke: var(--hover-bg);
   stroke-width: 8;
   background-clip: padding-box;
 }
@@ -148,10 +148,10 @@
 .timer-btn.secondary {
   background-color: transparent;
   border: 1px solid var(--border-color);
-  color: #64748b;
+  color: var(--muted-color);
 }
 .timer-btn.secondary:hover {
-  background-color: #f1f5f9;
+  background-color: var(--hover-bg);
   box-shadow: none;
   transform: translateY(-2px);
 }

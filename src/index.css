@@ -1,15 +1,17 @@
 :root {
-  --bg-color: #f1f3f7;
-  --text-color: #2d3748;
-  --primary-color: #5b7fa6;
-  --primary-hover: #4a6d92;
-  --accent-color: #6b7dbf;
-  --accent-hover: #5a6aaa;
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --accent-color: #f59e0b;
+  --accent-hover: #d97706;
   --surface-color: #ffffff;
-  --border-color: #dde3ec;
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --wheel-bg: #f1f3f7;
+  --border-color: #e5e7eb;
+  --glass-bg: #ffffff;
+  --glass-border: #e5e7eb;
+  --wheel-bg: #ffffff;
+  --muted-color: #6b7280;
+  --hover-bg: #f3f4f6;
   font-family: 'Outfit', sans-serif;
   line-height: 1.6;
   font-weight: 400;
@@ -28,6 +30,8 @@
   --glass-bg: rgba(13, 17, 23, 0.7);
   --glass-border: rgba(248, 81, 73, 0.2);
   --wheel-bg: #0d1117;
+  --muted-color: #8b949e;
+  --hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='mint'] {
@@ -44,6 +48,8 @@
   --wheel-bg: #dcfce7;
   --mesh-color-1: #4ade80;
   --mesh-color-2: #34d399;
+  --muted-color: #4b5563;
+  --hover-bg: rgba(22, 163, 74, 0.1);
 }
 
 
@@ -61,6 +67,8 @@
   --wheel-bg: #0f2744;
   --mesh-color-1: #0ea5e9;
   --mesh-color-2: #06b6d4;
+  --muted-color: #94a3b8;
+  --hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 :root {
@@ -98,27 +106,13 @@ body {
   background-color: var(--bg-color);
 }
 
-/* Simpleテーマ: ボタンを単色に */
-[data-theme='default'] button {
-  background: var(--primary-color);
-  box-shadow: 0 4px 12px rgba(91, 127, 166, 0.2);
-}
-
-[data-theme='default'] button:hover {
-  background: var(--primary-hover);
-  box-shadow: 0 8px 20px rgba(91, 127, 166, 0.3);
-}
-
+/* Simpleテーマ: パネルに軽い影をつける */
 [data-theme='default'] .glass-panel {
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme='default'] .glass-panel:hover {
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.09),
-    0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 @keyframes mesh-bg {
@@ -162,7 +156,7 @@ body {
 }
 
 .header-main p {
-  color: #64748b;
+  color: var(--muted-color);
   font-size: 1.25rem;
   margin-top: 0.5rem;
 }
@@ -187,7 +181,7 @@ body {
 }
 
 .daily-btn {
-  background: white;
+  background: var(--surface-color);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   white-space: nowrap;
@@ -476,7 +470,7 @@ input[type="text"] {
 }
 
 .daily-ritual-prompt.empty {
-  border-color: #94a3b8;
+  border-color: var(--muted-color);
 }
 
 .ritual-prompt-content {
@@ -499,7 +493,7 @@ input[type="text"] {
 .ritual-text-wrap p {
   margin: 0.25rem 0 0 0;
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--muted-color);
 }
 
 .ritual-start-btn {
