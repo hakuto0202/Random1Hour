@@ -146,12 +146,12 @@
 }
 
 .timer-btn.secondary {
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--muted-color);
+  background-color: var(--muted-color);
+  border: none;
+  color: white;
 }
 .timer-btn.secondary:hover {
-  background-color: var(--hover-bg);
+  filter: brightness(1.1);
   box-shadow: none;
   transform: translateY(-2px);
 }

@@ -106,6 +106,21 @@ body {
   background-color: var(--bg-color);
 }
 
+/* Simpleテーマ: ボタンを単色に */
+[data-theme='default'] button,
+[data-theme='default'] .ritual-start-btn {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(91, 127, 166, 0.2);
+}
+
+[data-theme='default'] button:hover,
+[data-theme='default'] .ritual-start-btn:hover {
+  background: var(--primary-hover);
+  color: white;
+  box-shadow: 0 8px 20px rgba(91, 127, 166, 0.3);
+}
+
 /* Simpleテーマ: パネルに軽い影をつける */
 [data-theme='default'] .glass-panel {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -465,8 +480,7 @@ input[type="text"] {
 .daily-ritual-prompt:hover {
   transform: translateY(-4px);
   border-style: solid;
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
-  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .daily-ritual-prompt.empty {
