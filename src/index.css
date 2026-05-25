@@ -135,6 +135,10 @@ body {
 [data-theme='mint'] .glass-panel {
   border: 2px solid #111827;
 }
+[data-theme='default'] .glass-panel:hover,
+[data-theme='mint'] .glass-panel:hover {
+  border: 2px solid #111827;
+}
 
 /* SimpleとFresh Mintテーマ: 本日のテーマの枠線も黒くする */
 [data-theme='default'] .daily-ritual-prompt,
@@ -143,7 +147,7 @@ body {
 }
 [data-theme='default'] .daily-ritual-prompt:hover,
 [data-theme='mint'] .daily-ritual-prompt:hover {
-  border-style: solid;
+  border: 2px solid #111827;
 }
 
 @keyframes mesh-bg {

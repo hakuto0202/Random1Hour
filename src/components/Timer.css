@@ -147,12 +147,10 @@
 
 .timer-btn.secondary {
   background-color: var(--primary-color);
-  opacity: 0.8;
   border: none;
   color: white;
 }
 .timer-btn.secondary:hover {
-  opacity: 1;
   filter: brightness(1.1);
   box-shadow: none;
   transform: translateY(-2px);
