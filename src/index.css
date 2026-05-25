@@ -1,8 +1,8 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #111827;
-  --primary-color: #3b82f6;
-  --primary-hover: #2563eb;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
   --accent-color: #f59e0b;
   --accent-hover: #d97706;
   --surface-color: #ffffff;
@@ -128,6 +128,22 @@ body {
 
 [data-theme='default'] .glass-panel:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* SimpleとFresh Mintテーマ: 背景と同化するのを防ぐため、はっきりした黒い枠線をつける */
+[data-theme='default'] .glass-panel,
+[data-theme='mint'] .glass-panel {
+  border: 2px solid #111827;
+}
+
+/* SimpleとFresh Mintテーマ: 本日のテーマの枠線も黒くする */
+[data-theme='default'] .daily-ritual-prompt,
+[data-theme='mint'] .daily-ritual-prompt {
+  border: 2px dashed #111827;
+}
+[data-theme='default'] .daily-ritual-prompt:hover,
+[data-theme='mint'] .daily-ritual-prompt:hover {
+  border-style: solid;
 }
 
 @keyframes mesh-bg {
