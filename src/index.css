@@ -82,11 +82,13 @@
 
 #root {
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;
@@ -598,7 +600,12 @@ input[type="text"] {
 /* モバイル (~480px) */
 @media (max-width: 480px) {
   :root {
-    font-size: 12px; /* 小さすぎたためPCと同じ12pxに引き上げ */
+    font-size: 13px; /* 少し大きめに再調整 */
+  }
+
+  /* iOS等でのフォーム入力時の自動ズームを防止 */
+  input, select, textarea, button {
+    font-size: 16px !important;
   }
 
   #root {

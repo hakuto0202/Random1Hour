@@ -37,7 +37,7 @@
 
 .roulette-info {
   text-align: center;
-  min-height: 80px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,8 +96,8 @@
 
 @media (max-width: 480px) {
   .wheel-wrapper {
-    width: min(300px, 88vw);
-    height: min(300px, 88vw);
+    width: min(320px, 88vw);
+    height: min(320px, 88vw);
   }
 
   .roulette-btn {
