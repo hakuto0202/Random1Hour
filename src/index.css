@@ -185,7 +185,7 @@ body {
 
 .header-main h1 {
   font-family: 'Syncopate', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin: 0;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
@@ -199,7 +199,7 @@ body {
 
 .header-main p {
   color: var(--muted-color);
-  font-size: 1rem;
+  font-size: 1.15rem;
   margin-top: 0.5rem;
 }
 
@@ -626,11 +626,11 @@ input[type="text"] {
   }
 
   .header-main h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .header-main p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     margin-top: 0.25rem;
   }
 
