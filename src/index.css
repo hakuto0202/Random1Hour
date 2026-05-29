@@ -431,130 +431,7 @@ input[type="text"] {
   border-color: var(--primary-color);
 }
 
-@keyframes slideDownIn {
-  0% { transform: translateY(-20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
 
-.daily-theme-banner {
-  background: var(--surface-color);
-  color: var(--text-color);
-  padding: 1.5rem 2.5rem;
-  border-radius: 24px;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: slideDownIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.daily-theme-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -20%;
-  width: 60%;
-  height: 200%;
-  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-  opacity: 0.15;
-  pointer-events: none;
-}
-
-.daily-banner-content {
-  position: relative;
-  z-index: 1;
-}
-
-.daily-banner-label {
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--primary-color);
-  letter-spacing: 0.15em;
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.daily-banner-text {
-  font-size: 2.25rem;
-  margin: 0;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-}
-
-.daily-banner-decoration {
-  width: 80px;
-  height: 80px;
-  background: var(--muted-color);
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6'/%3E%3Cpath d='M16 2v4'/%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M3 10h18'/%3E%3Ccircle cx='18' cy='18' r='3'/%3E%3Cpath d='m15 15 6 6'/%3E%3C/svg%3E") no-repeat center;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6'/%3E%3Cpath d='M16 2v4'/%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M3 10h18'/%3E%3Ccircle cx='18' cy='18' r='3'/%3E%3Cpath d='m15 15 6 6'/%3E%3C/svg%3E") no-repeat center;
-  opacity: 0.1;
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.daily-ritual-prompt {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
-  border: 1px dashed var(--primary-color);
-  background: var(--glass-bg);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.daily-ritual-prompt:hover {
-  transform: translateY(-4px);
-  border-style: solid;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.daily-ritual-prompt.empty {
-  border-color: var(--muted-color);
-}
-
-.ritual-prompt-content {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.ritual-sparkle {
-  font-size: 2.5rem;
-  animation: float 2s ease-in-out infinite;
-}
-
-.ritual-text-wrap h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 800;
-}
-
-.ritual-text-wrap p {
-  margin: 0.25rem 0 0 0;
-  font-size: 0.9rem;
-  color: var(--muted-color);
-}
-
-.ritual-start-btn {
-  background: var(--primary-color);
-  padding: 0.6rem 1.2rem;
-  font-size: 0.875rem;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
 
 /* Staggered Animations */
 .main-col:nth-child(1) { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
@@ -586,9 +463,7 @@ input[type="text"] {
     font-size: 2.75rem;
   }
 
-  .daily-banner-text {
-    font-size: 1.75rem;
-  }
+
 
   .main-layout {
     display: flex;
@@ -653,57 +528,7 @@ input[type="text"] {
     font-size: 0.95rem;
   }
 
-  .header-actions {
-    width: 100%;
-  }
 
-  .daily-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* デイリーテーマバナー */
-  .daily-theme-banner {
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .daily-banner-text {
-    font-size: 1.5rem;
-  }
-
-  .daily-banner-decoration {
-    display: none;
-  }
-
-  /* デイリーリチュアルプロンプト */
-  .daily-ritual-prompt {
-    padding: 1rem 1.25rem;
-    margin-bottom: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .ritual-prompt-content {
-    gap: 1rem;
-  }
-
-  .ritual-sparkle {
-    font-size: 1.75rem;
-  }
-
-  .ritual-text-wrap h3 {
-    font-size: 1.1rem;
-  }
-
-  .ritual-start-btn {
-    width: 100%;
-    text-align: center;
-  }
 
   /* アクティブミッションバナー */
   .active-mission-banner {
