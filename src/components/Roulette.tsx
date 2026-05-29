@@ -245,7 +245,7 @@ export function Roulette({ tasks, onResult, onTripleChoice, theme }: Props) {
           onClick={handleStart}
           disabled={isSpinning || tasks.length === 0}
         >
-          {isSpinning ? '抽選中...' : 'ガチャを回す！'}
+          {isSpinning ? '抽選中...' : 'ルーレットを回す！'}
         </button>
         <div className="secondary-actions">
           <button
