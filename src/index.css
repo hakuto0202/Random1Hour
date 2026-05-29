@@ -518,14 +518,17 @@ input[type="text"] {
   }
 
   .theme-selector {
-    width: 100%;
-    padding: 0.75rem 1rem !important;
-    gap: 0.75rem;
+    width: auto;
+    align-self: flex-start; /* 画面幅いっぱいにせず左寄せに */
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem;
   }
 
   .theme-selector select {
-    flex: 1;
-    font-size: 0.95rem;
+    flex: none;
+    width: auto;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 
 
