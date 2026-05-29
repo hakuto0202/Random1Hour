@@ -15,7 +15,7 @@
   font-family: 'Outfit', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  font-size: 15px; /* 元の18pxと極端な12pxの中間 */
+  font-size: 12px; /* 現在の15pxの80%（ブラウザズーム80%を再現） */
 }
 
 [data-theme='cyberpunk'] {
@@ -598,7 +598,7 @@ input[type="text"] {
 /* モバイル (~480px) */
 @media (max-width: 480px) {
   :root {
-    font-size: 13px; /* 元の16pxと極端な11pxの中間 */
+    font-size: 10.5px; /* 現在の13pxの約80% */
   }
 
   #root {
