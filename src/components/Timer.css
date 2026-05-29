@@ -236,8 +236,8 @@
 
 .timer-circle-wrap {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,8 +310,8 @@
 
 @media (max-width: 480px) {
   .timer-circle-wrap {
-    width: 160px;
-    height: 160px;
+    width: 128px;
+    height: 128px;
   }
   
   .timer-text {
