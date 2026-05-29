@@ -15,7 +15,7 @@
   font-family: 'Outfit', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px; /* 元の18pxと極端な12pxの中間 */
 }
 
 [data-theme='cyberpunk'] {
@@ -164,7 +164,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 2rem;
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -263,8 +263,8 @@ body {
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 1.75rem;
+  border-radius: 24px;
+  padding: 2rem;
   box-shadow: 
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05),
@@ -598,7 +598,7 @@ input[type="text"] {
 /* モバイル (~480px) */
 @media (max-width: 480px) {
   :root {
-    font-size: 14px; /* 全体的な要素のサイズを約12%縮小 */
+    font-size: 13px; /* 元の16pxと極端な11pxの中間 */
   }
 
   #root {
@@ -606,8 +606,8 @@ input[type="text"] {
   }
 
   .app-container {
-    padding: 1rem 1.25rem; /* 上下の余白を縮小しつつ左右マージンは維持 */
-    gap: 1rem; /* 各セクションの間隔を狭める */
+    padding: 1.25rem 1.25rem;
+    gap: 1.25rem;
   }
 
   /* ヘッダー */
@@ -615,7 +615,7 @@ input[type="text"] {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    padding-bottom: 1.25rem;
+    padding-bottom: 1rem;
   }
 
   .header-main h1 {
@@ -666,15 +666,15 @@ input[type="text"] {
 
   /* デイリーリチュアルプロンプト */
   .daily-ritual-prompt {
-    padding: 1rem 1rem;
+    padding: 1rem 1.25rem;
     margin-bottom: 1rem;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .ritual-prompt-content {
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .ritual-sparkle {
@@ -710,7 +710,7 @@ input[type="text"] {
 
   /* glass-panel パディング縮小 */
   .glass-panel {
-    padding: 1.25rem;
+    padding: 1.5rem;
     border-radius: 16px;
   }
 

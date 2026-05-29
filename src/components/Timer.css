@@ -150,6 +150,158 @@
   border: none;
   color: white;
 }
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timer-container.break-mode {
+  border-color: #10b981;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.timer-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-badge {
+  font-size: 0.85rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: normal;
+}
+
+.timer-container.break-mode .time-badge {
+  background: #10b981;
+}
+
+.timer-container.break-mode .timer-header h2 {
+  color: #059669;
+}
+
+.mode-switch-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--muted-color);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+.mode-switch-btn:hover {
+  background: var(--hover-bg);
+}
+
+.time-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.time-option-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--muted-color);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.time-option-btn:hover {
+  background: var(--hover-bg);
+}
+
+.time-option-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.timer-circle-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-circle-bg {
+  fill: none;
+  stroke: var(--hover-bg);
+  stroke-width: 8;
+  background-clip: padding-box;
+}
+
+.timer-circle-progress {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+
+.timer-container.break-mode .timer-circle-progress {
+  stroke: #10b981;
+}
+
+.timer-text {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.timer-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+}
+
+.timer-btn.primary {
+  background-color: var(--primary-color);
+}
+.timer-container.break-mode .timer-btn.primary {
+  background-color: #10b981;
+}
+
+.timer-btn.secondary {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+}
 .timer-btn.secondary:hover {
   filter: brightness(1.1);
   box-shadow: none;
@@ -163,7 +315,7 @@
   }
   
   .timer-text {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
   
   .timer-btn {
