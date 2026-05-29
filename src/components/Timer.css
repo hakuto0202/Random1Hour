@@ -310,8 +310,8 @@
 
 @media (max-width: 480px) {
   .timer-circle-wrap {
-    width: 128px;
-    height: 128px;
+    width: 144px;
+    height: 144px;
   }
   
   .timer-text {

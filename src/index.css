@@ -598,7 +598,7 @@ input[type="text"] {
 /* モバイル (~480px) */
 @media (max-width: 480px) {
   :root {
-    font-size: 10.5px; /* 現在の13pxの約80% */
+    font-size: 12px; /* 小さすぎたためPCと同じ12pxに引き上げ */
   }
 
   #root {

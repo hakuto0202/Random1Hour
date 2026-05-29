@@ -96,8 +96,8 @@
 
 @media (max-width: 480px) {
   .wheel-wrapper {
-    width: min(272px, 88vw);
-    height: min(272px, 88vw);
+    width: min(300px, 88vw);
+    height: min(300px, 88vw);
   }
 
   .roulette-btn {
